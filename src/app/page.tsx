@@ -1,5 +1,11 @@
+import { Tracker } from '@/components';
+
 function HomePage() {
-  return <p>Hello, World!</p>;
+  return (
+    <div className="grid h-dvh place-items-center">
+      <Tracker />
+    </div>
+  );
 }
 
 export default HomePage;
