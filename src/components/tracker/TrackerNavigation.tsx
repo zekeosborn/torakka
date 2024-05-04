@@ -1,16 +1,26 @@
+'use client';
+
+import { type Dayjs } from 'dayjs';
+
 import { ChevronLeft, ChevronRight } from '../icons';
 import { Button } from '../ui/button';
 
-function TrackerNavigation() {
+interface Props {
+  date: Dayjs;
+  onPrevMonth: () => void;
+  onNextMonth: () => void;
+}
+
+function TrackerNavigation({ date, onPrevMonth, onNextMonth }: Props) {
   return (
     <div className="flex items-center justify-between">
-      <Button size="icon">
+      <Button size="icon" onClick={onPrevMonth}>
         <ChevronLeft />
       </Button>
 
-      <div className="font-bold">January 1, 2024</div>
+      <div className="font-bold">{date.format('MMMM, YYYY')}</div>
 
-      <Button size="icon">
+      <Button size="icon" onClick={onNextMonth}>
         <ChevronRight />
       </Button>
     </div>
