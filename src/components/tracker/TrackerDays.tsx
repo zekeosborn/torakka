@@ -1,17 +1,44 @@
-import { Button } from '../ui/button';
+'use client';
 
-const days = Array.from({ length: 30 }, (_, i) => i + 1);
+import dayjs, { Dayjs } from 'dayjs';
+import { nanoid } from 'nanoid';
+
+import TrackerDay from './TrackerDay';
+import { useTracker } from './TrackerProvider';
 
 function TrackerDays() {
+  const { date } = useTracker();
+  const days = createDays(date);
+
   return (
     <div className="grid grid-cols-7 place-items-center gap-y-4">
-      {days.map((day) => (
-        <Button key={day} variant="ghost" size="icon" className="font-normal">
-          {day}
-        </Button>
+      {days.map(({ id, day }) => (
+        <TrackerDay key={id} day={day} />
       ))}
     </div>
   );
+}
+
+function createDays(date: Dayjs) {
+  const daysInMonth = date.daysInMonth();
+  const firstDayOfMonth = date.startOf('month').day();
+
+  const days: Day[] = Array.from({ length: daysInMonth }, (_, i) => ({
+    id: nanoid(),
+    day: dayjs(`${date.year()}-${date.month() + 1}-${i + 1}`),
+  }));
+
+  const filler: Day[] = Array.from({ length: firstDayOfMonth }, () => ({
+    id: nanoid(),
+    day: null,
+  }));
+
+  return [...filler, ...days];
+}
+
+interface Day {
+  id: string;
+  day: Dayjs | null;
 }
 
 export default TrackerDays;
