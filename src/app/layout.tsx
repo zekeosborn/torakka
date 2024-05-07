@@ -1,6 +1,9 @@
 import { type Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { type PropsWithChildren } from 'react';
+
+import { ThemeProvider } from '@/components/theme';
+import NavBar from './NavBar';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -9,7 +12,10 @@ function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main>{children}</main>
+        <ThemeProvider attribute="class" disableTransitionOnChange>
+          <NavBar />
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

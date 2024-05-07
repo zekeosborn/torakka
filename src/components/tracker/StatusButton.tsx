@@ -31,7 +31,8 @@ function StatusButton({
         'text-white hover:text-white': status,
         'font-bold': today,
         'text-black hover:text-black': today && status,
-        'text-blue-500 hover:text-blue-500': today && !status,
+        'text-blue-500 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-400':
+          today && !status,
         'cursor-default bg-transparent hover:bg-transparent': dayOutsideMonth,
         'animate-pulse': animate,
       })}
