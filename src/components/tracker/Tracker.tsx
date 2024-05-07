@@ -1,13 +1,18 @@
+import { cn } from '@/lib';
 import { Card, CardContent, CardHeader } from '../ui/card';
 import TrackerDays from './TrackerDays';
 import TrackerNavigation from './TrackerNavigation';
 import TrackerProvider from './TrackerProvider';
 import TrackerWeekLabel from './TrackerWeekLabel';
 
-function Tracker() {
+interface Props {
+  className?: string;
+}
+
+function Tracker({ className }: Props) {
   return (
     <TrackerProvider>
-      <Card className="w-[400px]">
+      <Card className={cn('w-full max-w-[400px]', className)}>
         <CardHeader className="gap-5">
           <TrackerNavigation />
           <TrackerWeekLabel />
