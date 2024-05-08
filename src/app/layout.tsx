@@ -22,7 +22,7 @@ function RootLayout({ children }: Readonly<PropsWithChildren>) {
 }
 
 export const metadata: Metadata = {
-  title: 'Torakka',
+  title: 'Torakka - Addiction Recovery Tracker',
   description:
     'Track your addiction recovery journey with Torakka. Monitor your daily progress, celebrate successes, and remain committed through relapses.',
 };
