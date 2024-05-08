@@ -1,16 +1,16 @@
 'use client';
 
 import dayjs, { type Dayjs } from 'dayjs';
-import {
-  createContext,
-  useContext,
-  useState,
-  type PropsWithChildren,
-} from 'react';
+import { createContext, useContext, useState } from 'react';
+
+interface Props {
+  children: React.ReactNode;
+  skeleton: boolean;
+}
 
 const TrackerContext = createContext<TrackerContext | null>(null);
 
-function TrackerProvider({ children }: PropsWithChildren) {
+function TrackerProvider({ children, skeleton }: Props) {
   const [date, setDate] = useState(dayjs());
 
   const navigatePrevMonth = () => setDate(date.subtract(1, 'month'));
@@ -18,7 +18,7 @@ function TrackerProvider({ children }: PropsWithChildren) {
 
   return (
     <TrackerContext.Provider
-      value={{ date, navigatePrevMonth, navigateNextMonth }}
+      value={{ date, navigatePrevMonth, navigateNextMonth, skeleton }}
     >
       {children}
     </TrackerContext.Provider>
@@ -35,6 +35,7 @@ function useTracker(): TrackerContext {
     date: context.date,
     navigatePrevMonth: context.navigatePrevMonth,
     navigateNextMonth: context.navigateNextMonth,
+    skeleton: context.skeleton,
   };
 }
 
@@ -42,6 +43,7 @@ interface TrackerContext {
   date: Dayjs;
   navigatePrevMonth: () => void;
   navigateNextMonth: () => void;
+  skeleton: boolean;
 }
 
 export { useTracker };
