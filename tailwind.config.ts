@@ -68,7 +68,7 @@ const config: Config = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       screens: {
-        tracker: '440px',
+        tracker: '448px',
       },
     },
   },
