@@ -12,7 +12,7 @@ interface Props {
 
 function Tracker({ className, skeleton }: Props) {
   return (
-    <TrackerProvider skeleton={!!skeleton}>
+    <TrackerProvider skeleton={skeleton}>
       <Card className={cn('w-full max-w-[400px]', className)}>
         <CardHeader className="gap-5">
           <TrackerNavigation />

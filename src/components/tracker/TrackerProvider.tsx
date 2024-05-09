@@ -5,7 +5,7 @@ import { createContext, useContext, useState } from 'react';
 
 interface Props {
   children: React.ReactNode;
-  skeleton: boolean;
+  skeleton?: boolean;
 }
 
 const TrackerContext = createContext<TrackerContext | null>(null);
@@ -43,7 +43,7 @@ interface TrackerContext {
   date: Dayjs;
   navigatePrevMonth: () => void;
   navigateNextMonth: () => void;
-  skeleton: boolean;
+  skeleton?: boolean;
 }
 
 export { useTracker };
