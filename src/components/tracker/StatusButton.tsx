@@ -1,44 +1,37 @@
 import { cva } from 'class-variance-authority';
-import { type MouseEvent } from 'react';
+import dayjs, { Dayjs } from 'dayjs';
 
 import { cn } from '@/lib';
 import { Button } from '../ui/button';
 
 interface Props {
-  animate?: boolean;
-  day?: number;
-  dayOutsideMonth: boolean;
+  day: Dayjs | null;
   disabled?: boolean;
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  loading?: boolean;
+  onClick?: (day: Dayjs) => void;
   status?: 'success' | 'relapse';
-  today: boolean;
 }
 
-function StatusButton({
-  animate,
-  day,
-  dayOutsideMonth,
-  disabled,
-  onClick,
-  status,
-  today,
-}: Props) {
+function StatusButton({ day, disabled, loading, onClick, status }: Props) {
+  const isToday = day?.format('DMYYYY') === dayjs().format('DMYYYY');
+
+  const styles = cn(variants({ status }), {
+    'text-white hover:text-white': status,
+    'font-bold': isToday,
+    'cursor-default bg-transparent hover:bg-transparent': !day,
+    'animate-pulse': loading,
+  });
+
+  const handleClick = () => day && !disabled && onClick && onClick(day);
+
   return (
     <Button
       variant="ghost"
       size="icon"
-      className={cn(variants({ status }), {
-        'text-white hover:text-white': status,
-        'font-bold': today,
-        'text-black hover:text-black': today && status,
-        'text-blue-500 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-400':
-          today && !status,
-        'cursor-default bg-transparent hover:bg-transparent': dayOutsideMonth,
-        'animate-pulse': animate,
-      })}
-      onClick={(e) => !disabled && !dayOutsideMonth && onClick && onClick(e)}
+      className={styles}
+      onClick={handleClick}
     >
-      {day}
+      {day?.date()}
     </Button>
   );
 }

@@ -1,4 +1,4 @@
-import dayjs, { type Dayjs } from 'dayjs';
+import { type Dayjs } from 'dayjs';
 import StatusButton from './StatusButton';
 
 interface Props {
@@ -6,11 +6,7 @@ interface Props {
 }
 
 function TrackerDay({ day }: Props) {
-  const isToday = day?.format('DMYYYY') === dayjs().format('DMYYYY');
-
-  return (
-    <StatusButton day={day?.date()} today={isToday} dayOutsideMonth={!day} />
-  );
+  return <StatusButton day={day} />;
 }
 
 export default TrackerDay;

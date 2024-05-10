@@ -28,7 +28,7 @@ function createDays(date: Dayjs) {
 
   const days: Day[] = Array.from({ length: daysInMonth }, (_, i) => ({
     id: nanoid(),
-    day: dayjs(`${date.year()}-${date.month() + 1}-${i + 1}`),
+    day: dayjs(date).set('date', i + 1),
   }));
 
   const filler: Day[] = Array.from({ length: firstDayOfMonth }, () => ({
