@@ -1,4 +1,16 @@
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+
+import {
   AvatarFallback,
   AvatarImage,
   Avatar as ShadcnAvatar,
@@ -12,25 +24,40 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-interface Props {
-  name: string;
-  src: string;
-}
-
-function Avatar({ name, src }: Props) {
+function Avatar() {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger>
-        <ShadcnAvatar>
-          <AvatarImage src={src} />
-          <AvatarFallback>{name[0]}</AvatarFallback>
-        </ShadcnAvatar>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuLabel>{name}</DropdownMenuLabel>
-        <DropdownMenuItem>Sign Out</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <AlertDialog>
+      <DropdownMenu>
+        <DropdownMenuTrigger>
+          <ShadcnAvatar>
+            <AvatarImage src="/samurai.jpg" />
+            <AvatarFallback>Z</AvatarFallback>
+          </ShadcnAvatar>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent align="end">
+          <DropdownMenuLabel>Zhoiruddin</DropdownMenuLabel>
+          <DropdownMenuItem>
+            <AlertDialogTrigger>Sign Out</AlertDialogTrigger>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      {/* Sign out confirmation dialog */}
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Confirm sign out</AlertDialogTitle>
+          <AlertDialogDescription>
+            Are you sure you want to sign out?
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Sign Out</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
 
