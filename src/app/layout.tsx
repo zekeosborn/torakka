@@ -1,14 +1,13 @@
 import { type Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { type PropsWithChildren } from 'react';
 
-import { ThemeProvider } from '@/components/theme';
+import { ThemeProvider } from '@/components';
 import NavBar from './NavBar';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-function RootLayout({ children }: Readonly<PropsWithChildren>) {
+function RootLayout({ children }: Readonly<React.PropsWithChildren>) {
   return (
     <html lang="en">
       <body className={inter.className}>

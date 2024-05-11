@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { ModeToggle } from '@/components/theme';
+import { ModeToggle } from '@/components';
 import Avatar from './Avatar';
 
 function NavBar() {
