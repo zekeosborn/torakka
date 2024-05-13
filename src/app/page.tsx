@@ -1,10 +1,22 @@
-import { Tracker } from '@/components';
+import { auth } from '@/auth/auth';
+import { redirect } from 'next/navigation';
 
-function HomePage() {
+import { Tracker } from '@/components';
+import NavBar from './NavBar';
+
+async function HomePage() {
+  const session = await auth();
+
+  if (!session) return redirect('/welcome');
+
   return (
-    <div className="mb-8 px-6 pt-[calc(((100dvh-400px)/2)-80px)] tracker:mx-auto tracker:w-fit">
-      <Tracker className="tracker:w-[400px]" />
-    </div>
+    <>
+      <NavBar />
+
+      <main className="px-6">
+        <Tracker className="mb-8 mt-[calc(((100dvh-400px)/2)-80px)] tracker:mx-auto" />
+      </main>
+    </>
   );
 }
 

@@ -12,7 +12,7 @@ function NavBar() {
 
       <div className="flex items-center gap-5">
         <ModeToggle />
-        <Avatar src="/samurai.jpg" name="Ditto Mitchell" />
+        <Avatar />
       </div>
     </nav>
   );

@@ -1,0 +1,18 @@
+import { auth } from '@/auth/auth';
+import { redirect } from 'next/navigation';
+
+import SignInButton from './SignInButton';
+
+async function WelcomePage() {
+  const session = await auth();
+
+  if (session) return redirect('/');
+
+  return (
+    <div className="grid h-dvh place-items-center">
+      <SignInButton provider="google" />
+    </div>
+  );
+}
+
+export default WelcomePage;

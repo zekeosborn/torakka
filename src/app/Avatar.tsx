@@ -1,3 +1,5 @@
+import { auth } from '@/auth/auth';
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,19 +26,25 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-function Avatar() {
+import SignOutButton from './SignOutButton';
+
+async function Avatar() {
+  const session = await auth();
+
+  if (!session) return null;
+
   return (
     <AlertDialog>
       <DropdownMenu>
         <DropdownMenuTrigger>
           <ShadcnAvatar>
-            <AvatarImage src="/samurai.jpg" />
-            <AvatarFallback>Z</AvatarFallback>
+            <AvatarImage src={session.user?.image!} />
+            <AvatarFallback>{session.user?.name![0]}</AvatarFallback>
           </ShadcnAvatar>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Zhoiruddin</DropdownMenuLabel>
+          <DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
           <DropdownMenuItem>
             <AlertDialogTrigger>Sign Out</AlertDialogTrigger>
           </DropdownMenuItem>
@@ -54,7 +62,9 @@ function Avatar() {
 
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Sign Out</AlertDialogAction>
+          <AlertDialogAction>
+            <SignOutButton />
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
