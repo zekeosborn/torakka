@@ -12,9 +12,7 @@ function RootLayout({ children }: Readonly<React.PropsWithChildren>) {
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <ThemeProvider attribute="class" disableTransitionOnChange>
-            {children}
-          </ThemeProvider>
+          <ThemeProvider attribute="class">{children}</ThemeProvider>
         </AuthProvider>
       </body>
     </html>

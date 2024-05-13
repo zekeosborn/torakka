@@ -18,6 +18,8 @@ function StatusButton({ day, disabled, loading, onClick, status }: Props) {
   const styles = cn(variants({ status }), {
     'text-white hover:text-white': status,
     'font-bold': isToday,
+    'text-black hover:text-black': isToday && status,
+    'text-primary hover:text-primary': isToday && !status,
     'cursor-default bg-transparent hover:bg-transparent': !day,
     'animate-pulse': loading,
   });
