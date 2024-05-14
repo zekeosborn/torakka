@@ -2,6 +2,7 @@ import { type Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import { AuthProvider, ThemeProvider } from '@/components';
+import { Toaster } from '@/components/ui/toaster';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -11,7 +12,10 @@ function RootLayout({ children }: Readonly<React.PropsWithChildren>) {
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <ThemeProvider attribute="class">{children}</ThemeProvider>
+          <ThemeProvider attribute="class">
+            {children}
+            <Toaster />
+          </ThemeProvider>
         </AuthProvider>
       </body>
     </html>
