@@ -1,4 +1,4 @@
-import { auth } from '@/auth/auth';
+import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 
 import { Tracker } from '@/components';
