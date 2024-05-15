@@ -16,7 +16,7 @@ function SignInButton({ provider }: Props) {
     <Button
       size="lg"
       className="gap-2"
-      onClick={() => signIn(key, { callbackUrl: '/' })}
+      onClick={() => signIn(key, { callbackUrl: '/home' })}
     >
       {icon}
       <span>Sign In with {label}</span>

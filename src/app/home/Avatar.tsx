@@ -1,5 +1,3 @@
-import { auth } from '@/auth';
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -26,6 +24,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
+import { auth } from '@/auth';
 import SignOutButton from './SignOutButton';
 
 async function Avatar() {
@@ -51,23 +50,28 @@ async function Avatar() {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      {/* Sign out confirmation dialog */}
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Confirm sign out</AlertDialogTitle>
-          <AlertDialogDescription>
-            Are you sure you want to sign out?
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>
-            <SignOutButton />
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
+      <SignOutConfirmDialog />
     </AlertDialog>
+  );
+}
+
+function SignOutConfirmDialog() {
+  return (
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Confirm sign out</AlertDialogTitle>
+        <AlertDialogDescription>
+          Are you sure you want to sign out?
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction>
+          <SignOutButton />
+        </AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
   );
 }
 

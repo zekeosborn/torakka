@@ -1,23 +1,18 @@
-import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 
-import { Tracker } from '@/components';
-import NavBar from './NavBar';
+import { auth } from '@/auth';
+import SignInButton from './SignInButton';
 
-async function HomePage() {
+async function WelcomePage() {
   const session = await auth();
 
-  if (!session) return redirect('/welcome');
+  if (session) return redirect('/home');
 
   return (
-    <>
-      <NavBar />
-
-      <main className="px-6">
-        <Tracker className="mb-8 mt-[calc(((100dvh-400px)/2)-80px)] tracker:mx-auto" />
-      </main>
-    </>
+    <div className="grid h-dvh place-items-center">
+      <SignInButton provider="google" />
+    </div>
   );
 }
 
-export default HomePage;
+export default WelcomePage;
