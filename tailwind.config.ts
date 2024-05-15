@@ -70,6 +70,9 @@ const config: Config = {
       screens: {
         tracker: '448px',
       },
+      fontFamily: {
+        shadows: 'var(--font-shadows)',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

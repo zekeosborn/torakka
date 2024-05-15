@@ -1,5 +1,5 @@
 import { type Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Shadows_Into_Light_Two } from 'next/font/google';
 
 import { AuthProvider, ThemeProvider } from '@/components';
 import { Toaster } from '@/components/ui/toaster';
@@ -7,10 +7,16 @@ import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
+const shadows = Shadows_Into_Light_Two({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-shadows',
+});
+
 function RootLayout({ children }: Readonly<React.PropsWithChildren>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${shadows.variable}`}>
         <AuthProvider>
           <ThemeProvider attribute="class">
             {children}
