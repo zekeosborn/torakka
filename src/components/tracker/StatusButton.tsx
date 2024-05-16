@@ -1,3 +1,4 @@
+import { type $Enums } from '@prisma/client';
 import { cva } from 'class-variance-authority';
 import dayjs, { Dayjs } from 'dayjs';
 
@@ -7,11 +8,11 @@ import { Button } from '../ui/button';
 interface Props {
   day: Dayjs | null;
   onClick?: (day: Dayjs) => void;
-  status?: 'success' | 'relapse';
+  status?: $Enums.Status;
 }
 
 function StatusButton({ day, onClick, status }: Props) {
-  const isToday = day?.format('DMYYYY') === dayjs().format('DMYYYY');
+  const isToday = dayjs().isSame(day, 'day');
 
   const styles = cn(variants({ status }), {
     'text-white hover:text-white': status,

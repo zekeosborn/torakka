@@ -1,16 +1,18 @@
 'use client';
 
+import { type Day } from '@prisma/client';
 import dayjs, { type Dayjs } from 'dayjs';
 import { createContext, useContext, useState } from 'react';
 
 interface Props {
   children: React.ReactNode;
+  data?: Day[];
   skeleton?: boolean;
 }
 
 const TrackerContext = createContext<TrackerContext | null>(null);
 
-function TrackerProvider({ children, skeleton }: Props) {
+function TrackerProvider({ children, data, skeleton }: Props) {
   const [date, setDate] = useState(dayjs());
 
   const navigatePrevMonth = () => setDate(date.subtract(1, 'month'));
@@ -18,7 +20,13 @@ function TrackerProvider({ children, skeleton }: Props) {
 
   return (
     <TrackerContext.Provider
-      value={{ date, navigatePrevMonth, navigateNextMonth, skeleton }}
+      value={{
+        data,
+        date,
+        navigatePrevMonth,
+        navigateNextMonth,
+        skeleton,
+      }}
     >
       {children}
     </TrackerContext.Provider>
@@ -32,6 +40,7 @@ function useTracker(): TrackerContext {
     throw new Error('useTracker must be used within a TrackerProvider.');
 
   return {
+    data: context.data,
     date: context.date,
     navigatePrevMonth: context.navigatePrevMonth,
     navigateNextMonth: context.navigateNextMonth,
@@ -40,6 +49,7 @@ function useTracker(): TrackerContext {
 }
 
 interface TrackerContext {
+  data?: Day[];
   date: Dayjs;
   navigatePrevMonth: () => void;
   navigateNextMonth: () => void;
