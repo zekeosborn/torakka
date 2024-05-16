@@ -6,13 +6,11 @@ import { Button } from '../ui/button';
 
 interface Props {
   day: Dayjs | null;
-  disabled?: boolean;
-  loading?: boolean;
   onClick?: (day: Dayjs) => void;
   status?: 'success' | 'relapse';
 }
 
-function StatusButton({ day, disabled, loading, onClick, status }: Props) {
+function StatusButton({ day, onClick, status }: Props) {
   const isToday = day?.format('DMYYYY') === dayjs().format('DMYYYY');
 
   const styles = cn(variants({ status }), {
@@ -21,17 +19,14 @@ function StatusButton({ day, disabled, loading, onClick, status }: Props) {
     'text-black hover:text-black': isToday && status,
     'text-primary hover:text-primary': isToday && !status,
     'cursor-default bg-transparent hover:bg-transparent': !day,
-    'animate-pulse': loading,
   });
-
-  const handleClick = () => day && !disabled && onClick && onClick(day);
 
   return (
     <Button
       variant="ghost"
       size="icon"
       className={styles}
-      onClick={handleClick}
+      onClick={() => day && onClick && onClick(day)}
     >
       {day?.date()}
     </Button>
