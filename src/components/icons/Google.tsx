@@ -19,4 +19,4 @@ function Google({ className }: Props) {
   );
 }
 
-export default Google;
+export { Google };

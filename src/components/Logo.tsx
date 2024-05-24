@@ -17,4 +17,4 @@ function Logo({ className }: Props) {
   );
 }
 
-export default Logo;
+export { Logo };

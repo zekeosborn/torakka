@@ -1,8 +1,7 @@
-import { redirect } from 'next/navigation';
-
 import { auth } from '@/auth';
 import { Tracker } from '@/components';
 import prisma from '@/prisma/client';
+import { redirect } from 'next/navigation';
 import NavBar from './NavBar';
 
 async function HomePage() {
@@ -12,7 +11,7 @@ async function HomePage() {
 
   const user = await prisma.user.findUnique({
     where: { id: session.user?.id },
-    include: { days: true },
+    include: { dayRecords: true },
   });
 
   return (
@@ -20,7 +19,7 @@ async function HomePage() {
       <NavBar />
       <main className="px-6">
         <Tracker
-          data={user?.days}
+          dayRecords={user?.dayRecords}
           className="mb-8 mt-[calc(((100dvh-400px)/2)-80px)] tracker:mx-auto"
         />
       </main>

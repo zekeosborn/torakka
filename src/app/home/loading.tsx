@@ -1,7 +1,6 @@
-import { redirect } from 'next/navigation';
-
 import { auth } from '@/auth';
 import { Tracker } from '@/components';
+import { redirect } from 'next/navigation';
 import NavBar from './NavBar';
 
 async function loading() {

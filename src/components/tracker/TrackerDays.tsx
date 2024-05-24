@@ -1,8 +1,7 @@
 'use client';
 
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import { nanoid } from 'nanoid';
-
 import { Skeleton } from '../ui/skeleton';
 import TrackerDay from './TrackerDay';
 import { useTracker } from './TrackerProvider';
@@ -14,7 +13,7 @@ function TrackerDays() {
   return (
     <div className="grid grid-cols-7 place-items-center gap-y-4">
       {days.map(({ id, day }) => {
-        if (skeleton && !day) return <div key={id} />;
+        if (!day) return <div key={id} />;
         if (skeleton) return <Skeleton key={id} className="size-9" />;
         return <TrackerDay key={id} day={day} />;
       })}
@@ -22,7 +21,7 @@ function TrackerDays() {
   );
 }
 
-function createDays(date: Dayjs) {
+function createDays(date: dayjs.Dayjs) {
   const daysInMonth = date.daysInMonth();
   const firstDayOfMonth = date.startOf('month').day();
 
@@ -41,7 +40,7 @@ function createDays(date: Dayjs) {
 
 interface Day {
   id: string;
-  day: Dayjs | null;
+  day: dayjs.Dayjs | null;
 }
 
 export default TrackerDays;

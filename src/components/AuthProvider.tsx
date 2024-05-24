@@ -6,4 +6,4 @@ function AuthProvider({ children }: React.PropsWithChildren) {
   return <SessionProvider>{children}</SessionProvider>;
 }
 
-export default AuthProvider;
+export { AuthProvider };

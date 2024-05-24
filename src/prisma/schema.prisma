@@ -21,7 +21,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  days Day[]
+  dayRecords DayRecord[]
 }
 
 model Account {
@@ -84,9 +84,9 @@ enum Status {
   relapse
 }
 
-model Day {
+model DayRecord {
   id     Int      @id @default(autoincrement())
-  date   DateTime
+  day    DateTime
   status Status
   userId String   @db.VarChar(255)
   user   User     @relation(fields: [userId], references: [id])

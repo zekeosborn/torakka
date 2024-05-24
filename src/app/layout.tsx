@@ -1,12 +1,10 @@
-import { type Metadata } from 'next';
-import { Inter, Shadows_Into_Light_Two } from 'next/font/google';
-
 import { AuthProvider, ThemeProvider } from '@/components';
 import { Toaster } from '@/components/ui/toaster';
+import { type Metadata } from 'next';
+import { Inter, Shadows_Into_Light_Two } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
-
 const shadows = Shadows_Into_Light_Two({
   weight: '400',
   subsets: ['latin'],

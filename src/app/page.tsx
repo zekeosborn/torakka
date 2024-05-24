@@ -1,6 +1,5 @@
-import { redirect } from 'next/navigation';
-
 import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 import SignInButton from './SignInButton';
 
 async function WelcomePage() {

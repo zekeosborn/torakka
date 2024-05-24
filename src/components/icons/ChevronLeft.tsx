@@ -23,4 +23,4 @@ function ChevronLeft({ className }: Props) {
   );
 }
 
-export default ChevronLeft;
+export { ChevronLeft };
