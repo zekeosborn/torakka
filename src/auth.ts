@@ -7,7 +7,7 @@ export const { handlers, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [Google],
   session: {
-    strategy: 'jwt',
+    strategy: 'jwt', // session doesn't load with db strategy
   },
   callbacks: {
     // include user id in the session

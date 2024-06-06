@@ -6,7 +6,7 @@ interface Props {
   date: number;
   today: boolean;
   variant?: Variant;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 function StatusButton({ date, today, variant, onClick }: Props) {
@@ -14,11 +14,10 @@ function StatusButton({ date, today, variant, onClick }: Props) {
     <Button
       variant={variantMap[variant ?? 'default']}
       size="icon"
-      className="font-normal"
       onClick={onClick}
     >
       <div
-        className={cn({
+        className={cn('font-normal', {
           'grid size-6 place-items-center rounded-full bg-primary text-white':
             today,
         })}
