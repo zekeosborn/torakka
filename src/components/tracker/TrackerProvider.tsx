@@ -1,20 +1,20 @@
-'use client';
-
+import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { createContext, useContext, useState } from 'react';
-
-interface Props {
-  children: React.ReactNode;
-  skeleton?: boolean;
-}
+import { getDayRecords } from './tracker-api';
 
 const TrackerContext = createContext<TrackerContext | null>(null);
 
-function TrackerProvider({ children, skeleton }: Props) {
+export default function TrackerProvider({ children }: React.PropsWithChildren) {
   const [date, setDate] = useState(dayjs());
 
   const navigatePrevMonth = () => setDate(date.subtract(1, 'month'));
   const navigateNextMonth = () => setDate(date.add(1, 'month'));
+
+  const { isLoading } = useQuery({
+    queryKey: ['dayRecords'],
+    queryFn: getDayRecords,
+  });
 
   return (
     <TrackerContext.Provider
@@ -22,7 +22,7 @@ function TrackerProvider({ children, skeleton }: Props) {
         date,
         navigatePrevMonth,
         navigateNextMonth,
-        skeleton,
+        isLoading,
       }}
     >
       {children}
@@ -30,7 +30,7 @@ function TrackerProvider({ children, skeleton }: Props) {
   );
 }
 
-function useTracker(): TrackerContext {
+export function useTracker(): TrackerContext {
   const context = useContext(TrackerContext);
 
   if (!context)
@@ -43,8 +43,5 @@ interface TrackerContext {
   date: dayjs.Dayjs;
   navigatePrevMonth: () => void;
   navigateNextMonth: () => void;
-  skeleton?: boolean;
+  isLoading: boolean;
 }
-
-export { useTracker };
-export default TrackerProvider;

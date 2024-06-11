@@ -1,10 +1,8 @@
-'use client';
-
 import { ChevronLeft, ChevronRight } from '../icons';
 import { Button } from '../ui/button';
 import { useTracker } from './TrackerProvider';
 
-function TrackerNavigation() {
+export default function TrackerNavigation() {
   const { date, navigatePrevMonth, navigateNextMonth } = useTracker();
 
   return (
@@ -21,5 +19,3 @@ function TrackerNavigation() {
     </div>
   );
 }
-
-export default TrackerNavigation;

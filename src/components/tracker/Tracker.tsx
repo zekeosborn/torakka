@@ -1,3 +1,5 @@
+'use client';
+
 import { cn } from '@/lib';
 import { Card, CardContent, CardHeader } from '../ui/card';
 import TrackerDays from './TrackerDays';
@@ -9,7 +11,7 @@ interface Props {
   className?: string;
 }
 
-function Tracker({ className }: Props) {
+export function Tracker({ className }: Props) {
   return (
     <TrackerProvider>
       <Card className={cn('w-full max-w-[400px]', className)}>
@@ -24,5 +26,3 @@ function Tracker({ className }: Props) {
     </TrackerProvider>
   );
 }
-
-export { Tracker };

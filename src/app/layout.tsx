@@ -1,4 +1,4 @@
-import { AuthProvider, ThemeProvider } from '@/components';
+import { AuthProvider, QueryClientProvider, ThemeProvider } from '@/components';
 import { Toaster } from '@/components/ui/toaster';
 import { type Metadata } from 'next';
 import { Inter, Shadows_Into_Light_Two } from 'next/font/google';
@@ -15,12 +15,14 @@ function RootLayout({ children }: Readonly<React.PropsWithChildren>) {
   return (
     <html lang="en">
       <body className={`${inter.className} ${shadows.variable}`}>
-        <AuthProvider>
-          <ThemeProvider attribute="class">
-            {children}
-            <Toaster />
-          </ThemeProvider>
-        </AuthProvider>
+        <QueryClientProvider>
+          <AuthProvider>
+            <ThemeProvider attribute="class">
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </AuthProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );
