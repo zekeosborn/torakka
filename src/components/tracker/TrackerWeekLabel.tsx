@@ -1,6 +1,6 @@
 const weekLabel = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-function TrackerWeekLabel() {
+export default function TrackerWeekLabel() {
   return (
     <div className="grid grid-cols-7 place-items-center">
       {weekLabel.map((label) => (
@@ -11,5 +11,3 @@ function TrackerWeekLabel() {
     </div>
   );
 }
-
-export default TrackerWeekLabel;

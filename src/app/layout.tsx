@@ -11,7 +11,9 @@ const shadows = Shadows_Into_Light_Two({
   variable: '--font-shadows',
 });
 
-function RootLayout({ children }: Readonly<React.PropsWithChildren>) {
+export default function RootLayout({
+  children,
+}: Readonly<React.PropsWithChildren>) {
   return (
     <html lang="en">
       <body className={`${inter.className} ${shadows.variable}`}>
@@ -33,5 +35,3 @@ export const metadata: Metadata = {
   description:
     'Track your addiction recovery journey with Torakka. Monitor your daily progress, celebrate successes, and remain committed through relapses.',
 };
-
-export default RootLayout;

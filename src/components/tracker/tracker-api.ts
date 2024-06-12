@@ -1,4 +1,4 @@
-import type { DayRecord } from '@prisma/client';
+import { type DayRecord } from '@prisma/client';
 import axios from 'axios';
 
 const dayRecordAPI = axios.create({

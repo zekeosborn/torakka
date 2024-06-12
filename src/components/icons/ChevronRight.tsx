@@ -4,7 +4,7 @@ interface Props {
   className?: string;
 }
 
-function ChevronRight({ className }: Props) {
+export function ChevronRight({ className }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,5 +22,3 @@ function ChevronRight({ className }: Props) {
     </svg>
   );
 }
-
-export { ChevronRight };

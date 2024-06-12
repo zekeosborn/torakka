@@ -1,4 +1,4 @@
-import type { DayRecord } from '@prisma/client';
+import { type DayRecord } from '@prisma/client';
 import { useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import StatusButton from './StatusButton';

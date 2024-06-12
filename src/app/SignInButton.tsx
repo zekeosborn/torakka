@@ -8,7 +8,7 @@ interface Props {
   provider: keyof typeof providers;
 }
 
-function SignInButton({ provider }: Props) {
+export default function SignInButton({ provider }: Props) {
   const { key, label, icon } = providers[provider];
 
   return (
@@ -30,5 +30,3 @@ const providers = {
     icon: <Google />,
   },
 };
-
-export default SignInButton;

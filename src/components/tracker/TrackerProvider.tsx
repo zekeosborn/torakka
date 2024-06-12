@@ -30,7 +30,7 @@ export default function TrackerProvider({ children }: React.PropsWithChildren) {
   );
 }
 
-export function useTracker(): TrackerContext {
+export function useTracker() {
   const context = useContext(TrackerContext);
 
   if (!context)

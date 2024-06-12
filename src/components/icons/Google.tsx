@@ -4,7 +4,7 @@ interface Props {
   className?: string;
 }
 
-function Google({ className }: Props) {
+export function Google({ className }: Props) {
   return (
     <svg
       role="img"
@@ -18,5 +18,3 @@ function Google({ className }: Props) {
     </svg>
   );
 }
-
-export { Google };

@@ -24,7 +24,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import SignOutButton from './SignOutButton';
 
-async function Avatar() {
+export default async function Avatar() {
   const session = await auth();
 
   if (!session) return null;
@@ -68,5 +68,3 @@ function SignOutConfirmDialog() {
     </AlertDialogContent>
   );
 }
-
-export default Avatar;

@@ -4,7 +4,7 @@ interface Props {
   className?: string;
 }
 
-function Logo({ className }: Props) {
+export function Logo({ className }: Props) {
   return (
     <h1
       className={cn(
@@ -16,5 +16,3 @@ function Logo({ className }: Props) {
     </h1>
   );
 }
-
-export { Logo };

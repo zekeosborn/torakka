@@ -9,7 +9,7 @@ interface Props {
   onClick?: () => void;
 }
 
-function StatusButton({ date, today, variant, onClick }: Props) {
+export default function StatusButton({ date, today, variant, onClick }: Props) {
   return (
     <Button
       variant={variantMap[variant ?? 'default']}
@@ -36,5 +36,3 @@ const variantMap: Record<Variant, VariantValue> = {
   success: 'success',
   relapse: 'destructive',
 };
-
-export default StatusButton;

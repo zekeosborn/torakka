@@ -2,7 +2,7 @@ import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
 import SignInButton from './SignInButton';
 
-async function WelcomePage() {
+export default async function WelcomePage() {
   const session = await auth();
 
   if (session) return redirect('/home');
@@ -13,5 +13,3 @@ async function WelcomePage() {
     </div>
   );
 }
-
-export default WelcomePage;
