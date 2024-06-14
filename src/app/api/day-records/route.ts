@@ -1,14 +1,8 @@
 import { auth } from '@/auth';
 import prisma from '@/prisma/client';
+import type { DayRecordRequest } from '@/types';
+import { dayRecordSchema } from '@/validationSchemas';
 import { NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
-
-const dayRecordSchema = z.object({
-  day: z.string().datetime(),
-  status: z.enum(['success', 'relapse']),
-});
-
-type RequestBody = z.infer<typeof dayRecordSchema>;
 
 export async function GET(req: NextRequest) {
   // authentication
@@ -29,7 +23,7 @@ export async function POST(req: NextRequest) {
   if (!session) return NextResponse.json({}, { status: 401 });
 
   // request body validation
-  const body: RequestBody = await req.json();
+  const body: DayRecordRequest = await req.json();
   const validation = dayRecordSchema.safeParse(body);
 
   if (!validation.success)
