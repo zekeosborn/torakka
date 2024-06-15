@@ -27,20 +27,18 @@ import SignOutButton from './SignOutButton';
 export default async function Avatar() {
   const session = await auth();
 
-  if (!session) return null;
-
   return (
     <AlertDialog>
       <DropdownMenu>
         <DropdownMenuTrigger>
           <ShadcnAvatar>
-            <AvatarImage src={session.user?.image!} />
-            <AvatarFallback>{session.user?.name![0]}</AvatarFallback>
+            <AvatarImage src={session?.user?.image!} />
+            <AvatarFallback>{session?.user?.name![0]}</AvatarFallback>
           </ShadcnAvatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
-          <DropdownMenuItem>
+          <DropdownMenuLabel>{session?.user?.name}</DropdownMenuLabel>
+          <DropdownMenuItem className="w-full cursor-pointer" asChild>
             <AlertDialogTrigger>Sign Out</AlertDialogTrigger>
           </DropdownMenuItem>
         </DropdownMenuContent>
