@@ -1,8 +1,6 @@
-'use client';
-
+import { signIn } from '@/auth';
 import { Google } from '@/components/icons';
 import { Button } from '@/components/ui/button';
-import { signIn } from 'next-auth/react';
 
 interface Props {
   provider: keyof typeof providers;
@@ -12,14 +10,17 @@ export default function SignInButton({ provider }: Props) {
   const { key, label, icon } = providers[provider];
 
   return (
-    <Button
-      size="lg"
-      className="gap-2"
-      onClick={() => signIn(key, { callbackUrl: '/home' })}
+    <form
+      action={async () => {
+        'use server';
+        await signIn(key, { redirectTo: '/home' });
+      }}
     >
-      {icon}
-      <span>Sign In with {label}</span>
-    </Button>
+      <Button type="submit" size="lg" className="gap-2">
+        {icon}
+        <span>Sign In with {label}</span>
+      </Button>
+    </form>
   );
 }
 
