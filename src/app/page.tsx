@@ -1,4 +1,5 @@
 import { auth } from '@/auth';
+import { Logo } from '@/components';
 import { redirect } from 'next/navigation';
 import SignInButton from './SignInButton';
 
@@ -9,7 +10,10 @@ export default async function WelcomePage() {
 
   return (
     <div className="grid h-dvh place-items-center">
-      <SignInButton provider="google" />
+      <div className="flex flex-col items-center gap-14 md:gap-16">
+        <Logo className="text-6xl md:text-7xl" />
+        <SignInButton provider="google" />
+      </div>
     </div>
   );
 }
