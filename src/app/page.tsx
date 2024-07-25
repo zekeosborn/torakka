@@ -9,9 +9,15 @@ export default async function WelcomePage() {
   if (session) return redirect('/home');
 
   return (
-    <div className="grid h-dvh place-items-center">
-      <div className="flex flex-col items-center gap-14 md:gap-16">
-        <Logo className="text-6xl md:text-7xl" />
+    <div className="flex h-dvh items-center justify-center">
+      <div className="flex flex-col items-center gap-14">
+        <div>
+          <Logo className="mb-1 text-6xl xl:text-7xl" />
+          <p className="text-center font-shadows text-xl text-gray-600 xl:text-2xl">
+            Addiction Recovery Tracker
+          </p>
+        </div>
+
         <SignInButton provider="google" />
       </div>
     </div>
