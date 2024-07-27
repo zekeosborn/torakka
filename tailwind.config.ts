@@ -72,7 +72,7 @@ const config: Config = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       screens: {
-        tracker: '448px',
+        tall: { raw: '(min-height: 600px)' },
       },
       fontFamily: {
         shadows: 'var(--font-shadows)',

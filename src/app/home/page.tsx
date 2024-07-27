@@ -12,7 +12,7 @@ export default async function HomePage() {
     <>
       <Header />
       <main className="px-6">
-        <Tracker className="mb-8 mt-[calc(((100dvh-400px)/2)-80px)] tracker:mx-auto" />
+        <Tracker className="mx-auto mb-10 mt-5 tall:mb-0 tall:mt-[calc(((100dvh-400px)/2)-80px)]" />
       </main>
     </>
   );
