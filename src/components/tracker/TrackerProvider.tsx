@@ -1,11 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
-import { createContext, useContext, useState } from 'react';
+import {
+  createContext,
+  type PropsWithChildren,
+  useContext,
+  useState,
+} from 'react';
 import { getDayRecords } from './tracker-api';
 
 const TrackerContext = createContext<TrackerContext | null>(null);
 
-export default function TrackerProvider({ children }: React.PropsWithChildren) {
+export default function TrackerProvider({ children }: PropsWithChildren) {
   const [date, setDate] = useState(dayjs());
 
   const navigatePrevMonth = () => setDate(date.subtract(1, 'month'));
