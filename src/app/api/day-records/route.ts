@@ -4,12 +4,12 @@ import type { DayRecordRequest } from '@/types';
 import { dayRecordSchema } from '@/validationSchemas';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(req: NextRequest) {
+export async function GET(request: NextRequest) {
   // authentication
   const session = await auth();
   if (!session) return NextResponse.json({}, { status: 401 });
 
-  // fetch all day record
+  // get day records
   const dayRecords = await prisma.dayRecord.findMany({
     where: { userId: session.user?.id },
   });
@@ -17,13 +17,13 @@ export async function GET(req: NextRequest) {
   return NextResponse.json(dayRecords);
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(request: NextRequest) {
   // authentication
   const session = await auth();
   if (!session) return NextResponse.json({}, { status: 401 });
 
   // request body validation
-  const body: DayRecordRequest = await req.json();
+  const body: DayRecordRequest = await request.json();
   const validation = dayRecordSchema.safeParse(body);
 
   if (!validation.success)

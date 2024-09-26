@@ -2,9 +2,13 @@ import { auth } from '@/auth';
 import prisma from '@/prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
+interface DeleteRequestContext {
+  params: { id: string };
+}
+
 export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } },
+  request: NextRequest,
+  { params }: DeleteRequestContext,
 ) {
   // authentication
   const session = await auth();
