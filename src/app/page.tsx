@@ -18,7 +18,7 @@ export default async function WelcomePage() {
           </p>
         </div>
 
-        <SignInButton provider="google" />
+        <SignInButton />
       </div>
     </div>
   );
