@@ -18,6 +18,7 @@ export default function RootLayout({
 }
 
 export const metadata: Metadata = {
-  title: '',
-  description: '',
+  title: 'Torakka - Addiction Recovery Tracker',
+  description:
+    'Track your daily progress and boost your awareness of the addiction.',
 };
