@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@/components';
 import type { Metadata } from 'next';
 import { SessionProvider } from 'next-auth/react';
 import { Inter, Shadows_Into_Light_Two } from 'next/font/google';
@@ -16,7 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${shadows.variable} antialiased`}>
-        <SessionProvider>{children}</SessionProvider>
+        <SessionProvider>
+          <ThemeProvider attribute="class" defaultTheme="system">
+            {children}
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );
