@@ -1,7 +1,7 @@
 import { Logo } from '@/components';
 import SignInButton from './SignInButton';
 
-export default function Home() {
+export default function Welcome() {
   return (
     <main className="flex h-dvh items-center justify-center">
       <div className="flex flex-col items-center gap-14">
