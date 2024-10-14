@@ -20,6 +20,8 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  dayLogs DayLog[]
 }
 
 model Account {
@@ -75,4 +77,17 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, credentialID])
+}
+
+enum Status {
+  success
+  relapse
+}
+
+model DayLog {
+  id     Int      @id @default(autoincrement())
+  userId String   @db.VarChar(255)
+  day    DateTime
+  status Status
+  user   User     @relation(fields: [userId], references: [id])
 }
