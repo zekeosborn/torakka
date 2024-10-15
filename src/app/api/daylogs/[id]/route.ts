@@ -10,45 +10,38 @@ export async function DELETE(
   request: NextRequest,
   { params }: DeleteRequestContext,
 ) {
-  try {
-    // authentication
-    const session = await auth();
-    if (!session)
-      return NextResponse.json(
-        { error: 'You must sign in to perform this action.' },
-        { status: 401 },
-      );
-
-    // verify day log existence
-    const dayLog = await prisma.dayLog.findUnique({
-      where: { id: parseInt(params.id) },
-    });
-
-    if (!dayLog)
-      return NextResponse.json(
-        { error: `No day log with ID ${params.id} was found.` },
-        { status: 404 },
-      );
-
-    // authorization
-    if (session.user?.id !== dayLog.userId)
-      return NextResponse.json(
-        { error: "You don't have permission to delete this day log." },
-        { status: 403 },
-      );
-
-    // delete day log
-    await prisma.dayLog.delete({
-      where: { id: 10 },
-    });
-
-    return NextResponse.json({
-      message: `Day log ${params.id} has been successfully deleted.`,
-    });
-  } catch (error) {
+  // authentication
+  const session = await auth();
+  if (!session)
     return NextResponse.json(
-      { error: 'An unexpected error occurred. Please try again later.' },
-      { status: 500 },
+      { error: 'You must sign in to perform this action.' },
+      { status: 401 },
     );
-  }
+
+  // verify day log existence
+  const dayLog = await prisma.dayLog.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+
+  if (!dayLog)
+    return NextResponse.json(
+      { error: `No day log with ID ${params.id} was found.` },
+      { status: 404 },
+    );
+
+  // authorization
+  if (session.user?.id !== dayLog.userId)
+    return NextResponse.json(
+      { error: "You don't have permission to delete this day log." },
+      { status: 403 },
+    );
+
+  // delete day log
+  await prisma.dayLog.delete({
+    where: { id: 10 },
+  });
+
+  return NextResponse.json({
+    message: `Day log ${params.id} has been successfully deleted.`,
+  });
 }
