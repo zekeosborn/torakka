@@ -4,7 +4,7 @@ interface Props {
   className?: string;
 }
 
-export function Logo({ className }: Props) {
+export default function Logo({ className }: Props) {
   return (
     <h1
       className={cn(

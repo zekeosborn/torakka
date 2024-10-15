@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@/components';
+import { ThemeProvider } from '@/components/theme/ThemeProvider';
 import type { Metadata } from 'next';
 import { SessionProvider } from 'next-auth/react';
 import { Inter, Shadows_Into_Light_Two } from 'next/font/google';

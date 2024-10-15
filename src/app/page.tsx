@@ -1,5 +1,5 @@
 import { auth } from '@/auth';
-import { Logo } from '@/components';
+import Logo from '@/components/Logo';
 import { redirect } from 'next/navigation';
 import SignInButton from './SignInButton';
 

@@ -1,4 +1,5 @@
-import { Logo, ThemeToggle } from '@/components';
+import Logo from '@/components/Logo';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import ProfileMenu from './ProfileMenu';
 
 export default function Header() {
