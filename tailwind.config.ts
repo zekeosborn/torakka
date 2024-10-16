@@ -60,6 +60,9 @@ const config: Config = {
       fontFamily: {
         shadows: 'var(--font-shadows)',
       },
+      screens: {
+        tall: { raw: '(min-height: 600px)' },
+      },
     },
   },
 };
