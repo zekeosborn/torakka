@@ -1,3 +1,4 @@
+import QueryClientProvider from '@/components/QueryClientProvider';
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
 import type { Metadata } from 'next';
 import { SessionProvider } from 'next-auth/react';
@@ -18,9 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} ${shadows.variable} antialiased`}>
         <SessionProvider>
-          <ThemeProvider attribute="class" defaultTheme="system">
-            {children}
-          </ThemeProvider>
+          <QueryClientProvider>
+            <ThemeProvider attribute="class" defaultTheme="system">
+              {children}
+            </ThemeProvider>
+          </QueryClientProvider>
         </SessionProvider>
       </body>
     </html>
