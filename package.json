@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "prisma": "dotenv -e .env.local -- npx prisma",
-    "commit": "cz"
+    "commit": "cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.7.0",
@@ -41,6 +42,7 @@
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
+    "conventional-changelog-cli": "^5.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "dotenv-cli": "^7.4.2",
     "eslint": "^8.57.1",
