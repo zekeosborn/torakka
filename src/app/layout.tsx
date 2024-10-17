@@ -1,5 +1,6 @@
 import QueryClientProvider from '@/components/QueryClientProvider';
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
+import { Toaster } from '@/components/ui/toaster';
 import type { Metadata } from 'next';
 import { SessionProvider } from 'next-auth/react';
 import { Inter, Shadows_Into_Light_Two } from 'next/font/google';
@@ -22,6 +23,7 @@ export default function RootLayout({
           <QueryClientProvider>
             <ThemeProvider attribute="class" defaultTheme="system">
               {children}
+              <Toaster />
             </ThemeProvider>
           </QueryClientProvider>
         </SessionProvider>
