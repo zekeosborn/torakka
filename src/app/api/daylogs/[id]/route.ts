@@ -38,7 +38,7 @@ export async function DELETE(
 
   // delete day log
   await prisma.dayLog.delete({
-    where: { id: 10 },
+    where: { id: dayLog.id },
   });
 
   return NextResponse.json({
